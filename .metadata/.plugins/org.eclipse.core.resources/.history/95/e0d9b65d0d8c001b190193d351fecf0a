@@ -1,0 +1,12 @@
+package com.pa.main;
+
+import java.io.*;
+import javax.sound.sampled.*;
+
+public class Sound {
+	
+	public static class Clips{
+		
+	}
+	
+}
