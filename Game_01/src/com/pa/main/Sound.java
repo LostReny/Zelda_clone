@@ -41,7 +41,9 @@ public class Sound {
 	
 	public static Clips music = load("/music.wav",1);
 	public static Clips hurtEffect = load("/hurt.wav",1);
-	public static Clips shootEffect = load("shoot.wav",1);
+	public static Clips shootEffect = load("/shoot.wav",1);
+	public static Clips pickupEffect = load("/pickup.wav",1);
+	public static Clips hitEffect = load("/hit.wav",1);
 	
 	
 	private static Clips load(String name, int count) {
@@ -67,5 +69,4 @@ public class Sound {
 		}
 		
 	}
-	
 }

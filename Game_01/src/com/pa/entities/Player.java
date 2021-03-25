@@ -133,11 +133,13 @@ public class Player extends Entity {
 				py = 18;
 				dy = 1;
 			}
-			
 			BulletShoot bullet = new BulletShoot(this.getX()+px, this.getY()+py, 3,3, null, dx, dy);
 			Game.bullets.add(bullet);
+			Sound.shootEffect.play();
 			}
 		}
+		
+		
 		
 		if(mouseShoot) {
 			mouseShoot = false;
@@ -204,6 +206,7 @@ public class Player extends Entity {
 			Entity atual = Game.entities.get(i);
 			if(atual instanceof Bullet) {
 				if(Entity.isColliding(this, atual)) {
+					Sound.pickupEffect.play();
 					ammo+=15;
 					//System.out.println("Munição = " + ammo);
 					Game.entities.remove(atual);
@@ -218,6 +221,7 @@ public class Player extends Entity {
 			Entity atual = Game.entities.get(i);
 			if(atual instanceof LifePack) {
 				if(Entity.isColliding(this, atual)) {
+					Sound.pickupEffect.play();
 					life+=10;
 					if(life > 100)
 						life = 100;
@@ -232,6 +236,7 @@ public class Player extends Entity {
 			Entity atual = Game.entities.get(i);
 			if(atual instanceof Weapon) {
 				if(Entity.isColliding(this, atual)) {
+					Sound.pickupEffect.play();
 					arma = true;
 					//System.out.println("Pegou a arma do chão");
 					Game.entities.remove(atual);
