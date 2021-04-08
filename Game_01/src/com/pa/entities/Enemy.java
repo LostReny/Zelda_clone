@@ -60,6 +60,7 @@ public class Enemy extends Entity {
 			//Estamos colidindo
 			if(Game.rand.nextInt(100) < 10) {
 				Sound.hurtEffect.play();
+				//dano
 				Game.player.life-=Game.rand.nextInt(3);
 				Game.player.isDamaged = true;
 				//System.out.println("Vida : " + Game.player.life);
@@ -142,8 +143,8 @@ public class Enemy extends Entity {
 		}else {
 			g.drawImage(Entity.ENEMY_FEEDBACK, this.getX() - Camera.x, this.getY() - Camera.y, null);
 		}
-		/*g.setColor(Color.blue);
-		g.fillRect(this.getX() + maskx - Camera.x, this.getY() + masky - Camera.y, maskw, maskh);*/
+		//g.setColor(Color.blue);
+		//g.fillRect(this.getX() + maskx - Camera.x, this.getY() + masky - Camera.y, maskw, maskh);
 	}
 
 }

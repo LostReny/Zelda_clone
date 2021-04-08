@@ -280,6 +280,10 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 			
 		}
 		
+		if(e.getKeyCode() == KeyEvent.VK_Z ||
+			e.getKeyCode() == KeyEvent.VK_NUMPAD2) {
+			player.jump = true;
+		}
 
 		
 	}
