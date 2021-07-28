@@ -39,6 +39,11 @@ public class Enemy extends Entity {
 		masky = 8;
 		maskw = 5;
 		maskh = 5;*/
+		
+		
+		// CÓDIGO DE MOVIMENTO INIMIGO LEVE - para muitos inimigos no mapa
+		/*
+		if(this.calculateDistance(this.getX(), this.getY(), Game.player.getX(), Game.player.getY()) < 90) {
 		if(this.isCollidingWithPlayer() == false) {
 		if((int)x < Game.player.getX() && World.isFree((int)(x+speed), getY())
 					&& !isColliding((int)(x+speed), getY())) {
@@ -66,7 +71,7 @@ public class Enemy extends Entity {
 				//System.out.println("Vida : " + Game.player.life);
 			}
 		}
-		
+		*/
 			frames++;
 			if(frames == maxFrames) {
 				frames = 0;
@@ -90,7 +95,8 @@ public class Enemy extends Entity {
 			}
 		}
 			
-	}
+	} //else{}  - o que inimigo faz quando vc não esta perto
+	
 	
 	public void destroySelf() {
 		Game.enemies.remove(this);

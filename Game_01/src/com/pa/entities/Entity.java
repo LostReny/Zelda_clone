@@ -1,12 +1,15 @@
 package com.pa.entities;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.util.List;
 
 import com.pa.main.Game;
 import com.pa.world.Camera;
+import com.pa.world.Node;
+import com.pa.world.Vector2i;
+
 
 public class Entity {
 	
@@ -24,11 +27,14 @@ public class Entity {
 	public static BufferedImage GUN_DAMAGE_UP = Game.spritesheet.getSprite(8*16, 3*16, 16, 16);
 	public static BufferedImage GUN_DAMAGE_DOWN = Game.spritesheet.getSprite(9*16, 3*16, 16, 16);
 	
+	
 	protected double x;
 	protected double y;
 	protected int z;
 	protected int width; 
 	protected int height;
+	
+	protected List<Node> path;
 	
 	private BufferedImage sprite;
 	
@@ -84,6 +90,39 @@ public class Entity {
 	public void tick() {
 		
 	}
+	
+	public double calculateDistance(int x1, int y1, int x2, int y2) {
+		return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+		
+	}
+	
+	public void followPath(List<Node> path) {
+		// consigo encontrar um caminho
+		if(path != null) {
+			//e se meu caminho for maior que 0, ainda tenho caminho para percorrer
+			if(path.size() > 0) {
+				Vector2i target = path.get(path.size() -1).tile;
+				//xprev = x; 
+				//yprev = y;
+				if(x < target.x * 16) {
+					x++;
+				}else if (x > target.x *16) {
+					x--;
+				}
+				if (y < target.y * 16) {
+					y++;
+				}else if (y > target.y * 16) {
+					y--;
+				}
+				
+				if (x == target.x * 16 && y == target.y *16) {
+					path.remove(path.size() - 1);
+				}
+			}
+		}
+		
+	}
+	
 	
 	public static boolean isColliding(Entity e1, Entity e2) {
 		Rectangle e1Mask = new Rectangle(e1.getX() + e1.maskx, e1.getY()+e1.masky,e1.mwidth,e1.mheight);

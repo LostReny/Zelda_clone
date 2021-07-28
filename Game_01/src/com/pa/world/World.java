@@ -37,9 +37,13 @@ public class World {
 				for(int yy =0; yy < map.getHeight(); yy++) {
 					int pixelAtual = pixels[xx + (yy*map.getWidth())]; 
 					tiles[xx + (yy * WIDTH)] = new FloorTile(xx*16, yy*16,Tile.TILE_FLOOR);
+					//tiles[xx + (yy * WIDTH)] = new CaveTile(xx*16, yy*16,Tile.TILE_CAVE); -- ERRO NO LEVEL 2
 					if(pixelAtual == 0xFF000000) {
 						//Floor
 						tiles[xx + (yy * WIDTH)] = new FloorTile(xx*16, yy*16,Tile.TILE_FLOOR); 
+					}else if(pixelAtual == 0xFF494949) {
+						//Floor
+						tiles[xx + (yy * WIDTH)] = new CaveTile(xx*16, yy*16,Tile.TILE_CAVE);
 					}else if(pixelAtual == 0xFFFFFFFF) {
 						//Wall/Parede
 						tiles[xx + (yy * WIDTH)] = new WallTile(xx*16, yy*16,Tile.TILE_WALL);
